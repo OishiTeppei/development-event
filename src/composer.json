@@ -1,0 +1,11 @@
+{
+    "name": "development-event/src",
+    "description": "Application source",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": ""
+        }
+    }
+}
