@@ -1,12 +1,287 @@
 $base-color: #333;
+$border-color: #ddd;
+$accent-color: #2563eb;
+$danger-color: #dc2626;
+$warning-bg: #fff4e5;
+$sos-bg: #fdecea;
+$muted-color: #777;
+
+$status-colors: (
+    1: #2e7d32,
+    2: #9e9d24,
+    3: #f9a825,
+    4: #ef6c00,
+    5: #c62828,
+);
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
-    padding: 2rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", Meiryo, sans-serif;
     color: $base-color;
+    background: #fafafa;
 }
 
 h1 {
     font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+a {
+    color: $accent-color;
+}
+
+/* 未ログイン画面(新規登録・ログイン) */
+.auth-page {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+/* ログイン後の共通レイアウト(サイドバー + メイン) */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: #1f2937;
+    color: #fff;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-user {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 auto;
+}
+
+.sidebar-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-nav a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.link-button {
+    margin-top: 1rem;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1100px;
+}
+
+/* フォーム */
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: #fff;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-card label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.form-card input[type="text"],
+.form-card input[type="password"],
+.form-card select {
+    padding: 0.5rem;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-card fieldset {
+    border: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.form-card button {
+    align-self: flex-start;
+    background: $accent-color;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.errors {
+    background: $sos-bg;
+    border: 1px solid $danger-color;
+    color: $danger-color;
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+}
+
+.notice {
+    background: #e6f4ea;
+    border: 1px solid #2e7d32;
+    color: #1b5e20;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+}
+
+.error {
+    color: $danger-color;
+}
+
+.muted {
+    color: $muted-color;
+}
+
+/* Topページ: ヘルプ通知・質問あり */
+.sos-section {
+    background: $sos-bg;
+    border: 1px solid $danger-color;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.question-section {
+    background: $warning-bg;
+    border: 1px solid #f9a825;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* メンバーカード */
+.member-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.member-card {
+    background: #fff;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.badge-self {
+    font-size: 0.7rem;
+    background: $accent-color;
+    color: #fff;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    margin-left: 0.4rem;
+}
+
+.badge {
+    font-size: 0.7rem;
+    background: #f9a825;
+    color: #fff;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    margin-left: 0.4rem;
+}
+
+.skill-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.skill-table th,
+.skill-table td {
+    text-align: left;
+    padding: 0.2rem 0.4rem;
+    border-bottom: 1px solid #eee;
+}
+
+.task-list,
+.task-edit-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-list li,
+.task-edit-list li {
+    padding: 0.4rem 0.6rem;
+    border-left: 4px solid $muted-color;
+    margin-bottom: 0.4rem;
+    background: #f7f7f7;
+    border-radius: 0 4px 4px 0;
+}
+
+@each $status, $color in $status-colors {
+    .status-#{$status} {
+        border-left-color: $color;
+    }
+}
+
+.task-edit-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.task-edit-form .task-title {
+    font-weight: bold;
+    min-width: 160px;
+}
+
+.question-toggle {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.skill-field {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
 }
