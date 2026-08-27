@@ -1,0 +1,14 @@
+# dependencies
+node_modules/
+vendor/
+
+# build artifacts
+src/assets/scripts/
+src/assets/styles/
+
+# environment
+.env
+
+# OS / editor
+.DS_Store
+*.log
