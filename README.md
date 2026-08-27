@@ -148,8 +148,26 @@ Docker 側:
 
 ## 7. 起動確認
 
-- http://localhost:8080/ を開く。
-- http://localhost:8081/ で phpMyAdmin を開く。
+### サービスのアクセスURL
+
+| サービス | URL | 用途 |
+|---|---|---|
+| Webアプリ（Nginx） | http://localhost:8080/ | アプリ本体 |
+| phpMyAdmin | http://localhost:8081/ | DBの中身を直接確認したい時 |
+| MailHog | http://localhost:8025/ | 送信メールの確認画面（現状メール送信機能は未実装） |
+
+### アプリ内の各画面URL
+
+| 画面 | URL |
+|---|---|
+| 新規登録 | http://localhost:8080/register.php |
+| ログイン | http://localhost:8080/login.php |
+| ログアウト | http://localhost:8080/logout.php |
+| Topページ（要ログイン） | http://localhost:8080/index.php （`http://localhost:8080/` でも同じ） |
+| マイページ（要ログイン） | http://localhost:8080/mypage.php |
+
+未ログインの状態で index.php や mypage.php にアクセスすると、自動的に login.php にリダイレクトされます。まずは register.php から新規登録してください。
+
 - `src/dbconnect.php`（`http://localhost:8080/index.php`）で DB 接続エラーが出ないか確認する。
   - 初回起動直後は MySQL の初期化に十数秒〜数十秒かかり、この間は Connection refused と表示されることがあります。故障ではないので、少し待ってから再読み込みしてください。`docker compose logs db` を実行し、ログに ready for connections と出ていれば準備完了のサインです。
 
