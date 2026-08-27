@@ -168,6 +168,19 @@ Docker 側:
 
 未ログインの状態で index.php や mypage.php にアクセスすると、自動的に login.php にリダイレクトされます。まずは register.php から新規登録してください。
 
+### ダミーアカウントですぐ試す
+
+`docker/mysql/init.sql` には、初回起動時に自動投入される動作確認用のダミーユーザー4名（言語理解度・タスク付き）が含まれています。新規登録をせず、以下のアカウントでそのままログインして画面を確認できます。
+
+| ログインID | パスワード | 表示名 |
+|---|---|---|
+| yamada | password1234 | 山田 太郎 |
+| sato | password1234 | 佐藤 花子 |
+| suzuki | password1234 | 鈴木 一郎 |
+| tanaka | password1234 | 田中 美咲 |
+
+このダミーデータはローカル動作確認専用です。本番運用では `docker/mysql/init.sql` のダミーデータ部分（コメント「ここから動作確認用のダミーデータ」以降）を削除してください。
+
 - `src/dbconnect.php`（`http://localhost:8080/index.php`）で DB 接続エラーが出ないか確認する。
   - 初回起動直後は MySQL の初期化に十数秒〜数十秒かかり、この間は Connection refused と表示されることがあります。故障ではないので、少し待ってから再読み込みしてください。`docker compose logs db` を実行し、ログに ready for connections と出ていれば準備完了のサインです。
 
